@@ -1,0 +1,31 @@
+h1 Listing polls
+
+table class="table"
+  thead
+    tr
+      th Title
+      th Yes votes
+      th No votes
+      th Undefined votes
+      th
+      th
+      th
+
+  tbody
+    - @polls.each do |poll|
+      tr
+        td = poll.title
+        td = poll.yes_votes
+        td = poll.no_votes
+        td = poll.undefined_votes
+        td = button_to 'Yes', upvote_organization_poll_path(@organization, poll), method: :post, class: 'btn btn-success'
+        td = button_to 'Can`t decide', zerovote_organization_poll_path(@organization, poll), method: :post, class: 'btn btn-default'
+        td = button_to 'No', downvote_organization_poll_path(@organization, poll), method: :post, class: 'btn btn-danger'
+
+        td = link_to 'Show', organization_poll_path(@organization, poll)
+        td = link_to 'Edit', edit_organization_poll_path(@organization, poll)
+        td = link_to 'Destroy', organization_poll_path(@organization, poll), data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Poll', new_organization_poll_path(@organization)

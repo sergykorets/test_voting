@@ -1,0 +1,19 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @poll.title
+p
+  strong Yes votes:
+  = @poll.yes_votes
+p
+  strong No votes:
+  = @poll.no_votes
+p
+  strong Undefined votes:
+  = @poll.undefined_votes
+
+= link_to 'Edit', edit_organization_poll_path(@organization, @poll)
+'|
+= link_to 'Back', organization_polls_path
+

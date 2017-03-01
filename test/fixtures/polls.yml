@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  yes_votes: 1
+  no_votes: 1
+  undefined_votes: 1
+
+two:
+  title: MyString
+  yes_votes: 1
+  no_votes: 1
+  undefined_votes: 1

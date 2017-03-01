@@ -1,0 +1,26 @@
+= form_for [@organization, @invite] do |f|
+  - if @invite.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@invite.errors.count, "error")} prohibited this invite from being saved:"
+      ul
+        - @invite.errors.full_messages.each do |message|
+          li = message
+
+  .form-group
+    = f.label :user
+    = f.select(:email, User.where( role: 'voter').collect {|p| [ p.name, p.email ] }, {}, { class: "chosen-select form-control" }) 
+  .actions = f.submit
+hr
+h2 If user does not exist you can invite him via email
+= form_for [@organization, @invite] do |f|
+  - if @invite.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@invite.errors.count, "error")} prohibited this invite from being saved:"
+      ul
+        - @invite.errors.full_messages.each do |message|
+          li = message
+  .form-group
+      = f.label :user
+      br
+      = f.text_field :email                    
+  .actions = f.submit

@@ -1,0 +1,23 @@
+p#notice = notice
+
+p
+  strong Organization name:
+  = @organization.name
+h2 Members of organization
+.row
+  .col-md-10
+    .panel.panel-default
+      .panel-body
+        - @organization.voters.each do |v|
+          = v.name
+          br  
+
+= link_to 'Edit', edit_organization_path(@organization)
+'|
+= link_to 'Invite', new_organization_invite_path(@organization)
+'|
+= link_to 'Create poll', new_organization_poll_path(@organization)
+'|
+= link_to 'Polls', organization_polls_path(@organization)
+'|
+= link_to 'Back', organizations_path

@@ -1,0 +1,20 @@
+= @user.errors.full_messages.first if @user.errors.any?
+.row
+  .col-md-10
+    .panel.panel-default
+      .panel-body
+        h2
+          = t(".Create new head")
+        = form_for @user, url: heads_path do |form|
+          .text-field
+            = form.label :email
+            = form.text_field :email, type: 'email'
+          .text-field
+            = form.label :name
+            = form.text_field :name 
+          = form.hidden_field :role, value: 'head'
+          .password-field
+            = form.label :password
+            = form.password_field :password
+          .submit-field
+            = form.submit "Create head", class: 'btn btn-primary'

@@ -1,0 +1,22 @@
+.row
+  .col-md-10
+    .panel.panel-default
+      .panel-body
+        h2
+          = t(".Register my invitation")
+        - if @token != nil
+          = hidden_field_tag :invite_token, @token
+        = @token
+        = form_for @newUser, url: invited_voters_path do |form|
+          .text-field
+            = form.label :email
+            = form.text_field :email, type: 'email'
+          .text-field
+            = form.label :name
+            = form.text_field :name 
+          = form.hidden_field :role, value: 'voter'
+          .password-field
+            = form.label :password
+            = form.password_field :password
+          .submit-field
+            = form.submit "Create", class: 'btn btn-primary'
